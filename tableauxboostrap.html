@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+<div class="filter">
+    <input type="text" class=""   name="" id="recherche" placeholder="recherche" onkeyup="filtrerTableau()">
+</div>
     <div class="container">
+        
         <table class="table " id="table">
             <thead>
                 <tr>
@@ -20,88 +26,221 @@
                     <th id="email"> email</th>
                 </tr>
             </thead>
-            <tbody id="myTables">
+            <tbody id="array1" >
                 
             </tbody>
+            <tbody id="array2">
+                
+            </tbody>
+             <tbody id="array3">
+                
+            </tbody>
+            <tbody id="array4">
+                
+            </tbody>
+            
         </table>
+        <nav aria-label="...">
+            <ul class="pagination pagination-lg justify-content-center ">
+              <li class="page-item"><a class="page-link  m-2 act" href="#" id="button1">1</a></li>
+              <li class="page-item"><a class="page-link  m-2" href="#" id="button2">2</a></li>
+              <li class="page-item"><a class="page-link  m-2" href="#" id="button3">3</a></li>
+              <li class="page-item"><a class="page-link  m-2" href="#" id="button4">4</a></li>
+              
+            </ul>
+          </nav>
         
     </div>
     <script>
         var array=[
             {prenom:"soda1" ,nom:"gueye1", age:30 , note:15 ,email:"gueyesoda1@gmail.com"},
-            {prenom:"soda2" ,nom:"gueye2", age:18 , note:11, email:"gueyesoda2@gmail.com"},
-            {prenom:"soda3" ,nom:"gueye3", age:62 , note:16, email:"gueyesoda3@gmail.com"},
-            {prenom:"soda4" ,nom:"gueye4", age:34 , note:12, email:"gueyesoda4@gmail.com"},
-            {prenom:"soda5" ,nom:"gueye5", age:25 , note:14, email:"gueyesoda5@gmail.com"},
-            {prenom:"soda6" ,nom:"gueye6", age:28 , note:13,email:"gueyesoda6@gmail.com"},
-            {prenom:"soda7" ,nom:"gueye7", age:19 , note:19 ,email:"gueyesoda7@gmail.com"},
-            {prenom:"soda8" ,nom:"gueye8", age:20 , note:18, email:"gueyesoda8@gmail.com"},
-            {prenom:"soda9" ,nom:"gueye9", age:16 , note:10, email:"gueyesoda9@gmail.com"},
-            {prenom:"soda10" ,nom:"gueye10", age:65 , note:17, email:"gueyesoda10@gmail.com"},
-            {prenom:"soda11" ,nom:"gueye11", age:35 , note:1, email:"gueyesoda11@gmail.com"},
-            {prenom:"soda12" ,nom:"gueye12", age:26 , note:3, email:"gueyesoda12@gmail.com"},
-            {prenom:"soda13" ,nom:"gueye13", age:22 , note:2,email:"gueyesoda13@gmail.com"},
-            {prenom:"soda14" ,nom:"gueye14", age:31 , note:20 ,email:"gueyesoda14@gmail.com"},
-            {prenom:"soda15" ,nom:"gueye15", age:24 , note:5, email:"gueyesoda15@gmail.com"},
-            {prenom:"soda16" ,nom:"gueye16", age:17 , note:6, email:"gueyesoda16@gmail.com"},
-            {prenom:"soda17" ,nom:"gueye17", age:40 , note:7, email:"gueyesoda17@gmail.com"},
-            {prenom:"soda18" ,nom:"gueye18", age:55 , note:8, email:"gueyesoda18@gmail.com"},
-            {prenom:"soda19" ,nom:"gueye19", age:21 , note:9, email:"gueyesoda19@gmail.com"},
-            {prenom:"soda20" ,nom:"gueye20", age:29 , note:4,email:"gueyesoda20@gmail.com"},
+            {prenom:"fatou" ,nom:"gueye2", age:18 , note:11, email:"gueyesoda2@gmail.com"},
+            {prenom:"modou" ,nom:"gueye3", age:62 , note:16, email:"gueyesoda3@gmail.com"},
+            {prenom:"coumba" ,nom:"gueye4", age:34 , note:12, email:"gueyesoda4@gmail.com"},
+            {prenom:"ousmane" ,nom:"gueye5", age:25 , note:14, email:"gueyesoda5@gmail.com"},
+            {prenom:"daouda" ,nom:"gueye6", age:28 , note:13,email:"gueyesoda6@gmail.com"},
+            {prenom:"maty" ,nom:"gueye7", age:19 , note:19 ,email:"gueyesoda7@gmail.com"},
+            {prenom:"yacine" ,nom:"gueye8", age:20 , note:18, email:"gueyesoda8@gmail.com"},
+            {prenom:"amy" ,nom:"gueye9", age:16 , note:10, email:"gueyesoda9@gmail.com"},
+            {prenom:"seydi" ,nom:"gueye10", age:65 , note:17, email:"gueyesoda10@gmail.com"},
+            {prenom:"nogaye" ,nom:"gueye11", age:35 , note:1, email:"gueyesoda11@gmail.com"},
+            {prenom:"soda1" ,nom:"gueye12", age:26 , note:3, email:"gueyesoda12@gmail.com"},
+            {prenom:"soda1" ,nom:"gueye13", age:22 , note:2,email:"gueyesoda13@gmail.com"},
+            {prenom:"nogaye" ,nom:"gueye14", age:31 , note:20 ,email:"gueyesoda14@gmail.com"},
+            {prenom:"soda1" ,nom:"gueye15", age:24 , note:5, email:"gueyesoda15@gmail.com"},
+            {prenom:"soda1" ,nom:"gueye16", age:17 , note:6, email:"gueyesoda16@gmail.com"},
+            {prenom:"mameDiarra17" ,nom:"gueye17", age:40 , note:7, email:"gueyesoda17@gmail.com"},
+            {prenom:"diarra" ,nom:"gueye18", age:55 , note:8, email:"gueyesoda18@gmail.com"},
+            {prenom:"maissa" ,nom:"gueye19", age:21 , note:9, email:"gueyesoda19@gmail.com"},
+            {prenom:"fatou" ,nom:"gueye20", age:29 , note:4,email:"gueyesoda20@gmail.com"},
         ];
-    //    apelle de la fonction
-          buildTable(array)
-            function buildTable(data){
-             var table =document.getElementById("myTables")
-             for(var i= 0; i < data.length; i++){
-            var row = `<tr>
-                           <td>${data[i].prenom}</td>
-                           <td>${data[i].nom}</td>
-                           <td>${data[i].age}</td>
-                           <td>${data[i].note}</td>
-                           <td>${data[i].email}</td>
-                     </tr>`
-                       table.innerHTML +=row
-                    }
-                    
-               var max = array[0].note;
-              var min = array[0].note;
-              var maxAge = array[0].age;
-              var minAge = array[0].age;
-              for(var i= 0 ; i < array.length ; i++){
-                  if( max < array[i].note){
-                           max = array[i].note;
-                           }
-                       else if(min > array[i].note){
-                        min = array[i].note;
-                         }
-                        }
-                      document.write("La plus grande note est : " + max ) ;
-                     document.write("La plus petite note est : " + min+ '!<br/>');
-                     for(var i= 0 ; i < array.length ; i++){
-                  if( maxAge < array[i].age){
-                           maxAge = array[i].age;
-                           }
-                       else if(minAge > array[i].age){
-                        minAge = array[i].age;
-                         }
-                        }
-                        
-                        document.write("La plus grande age est : "  + maxAge);
-                     document.write("La plus petite age est : " + minAge);
-               
+
+        const tableau = document.getElementById("table");
+
+
+// filter recherche
+function filtrerTableau(){ 
+        var filter ,tableau,ligne,cellure,i ,text 
+        filter=document.getElementById("recherche").value.toUpperCase();
+        tableau = document.getElementById("table")
+        ligne = tableau .getElementsByTagName("tr");
+        for (i=0 ;i<ligne.length ;i++){
+            cellule =ligne[i].getElementsByTagName("td")[0]
+            if( cellule){
+                text=cellule.innerText;
+                if(text.toUpperCase().indexOf(filter) > -1)
+                {
+                    ligne[i].style.display="";
+
+                }else{
+                    ligne[i].style.display="none";
+
+                }
             }
             
-                   
-                   
-                  
 
-                  
-                   
-       
+        }
+      
 
-          
-</script>
+}
+      
+     
+         
+            // afficher tab1
+            // let arrayes = [];
+            let array1 =document.getElementById("array1")
+             for(let i = 0; i < 5; i++){
+            let row = `<tr>
+                            <td>${array[i].prenom}</td>
+                          <td>${array[i].nom}</td>
+                          <td>${array[i].age}</td>
+                            <td>${array[i].note}</td>
+                          <td>${array[i].email}</td>
+                   </tr>`
+                //    console.log ( array1)
+                   array1.innerHTML +=row
+
+                  };
+                //   array1.classList.add("affiche");
+
+                  //affichage table2 
+                    let array2 =document.getElementById("array2")
+                 for(let i = 5; i < 10; i++){
+              let row = `<tr>
+                           <td>${array[i].prenom}</td>
+                           <td>${array[i].nom}</td>
+                           <td>${array[i].age}</td>
+                           <td>${array[i].note}</td>
+                           <td>${array[i].email}</td>
+                     </tr>`
+                       array2.innerHTML +=row
+
+                    }
+             array2.classList.add("affiche");
+                 // //affichage table3
+                    let array3 =document.getElementById("array3")
+                 for(let i = 10; i < 15; i++){
+                  let row = `<tr>
+                               <td>${array[i].prenom}</td>
+                               <td>${array[i].nom}</td>
+                               <td>${array[i].age}</td>
+                              <td>${array[i].note}</td>
+                              <td>${array[i].email}</td>
+                            </tr>`
+                       array3.innerHTML +=row
+                    }
+                 array3.classList.add("affiche");
+                    //affichage table4
+                    let array4 =document.getElementById("array4")
+                 for(let i = 15; i < 20; i++){
+                     let row = `<tr>
+                           <td>${array[i].prenom}</td>
+                           <td>${array[i].nom}</td>
+                           <td>${array[i].age}</td>
+                           <td>${array[i].note}</td>
+                           <td>${array[i].email}</td>
+                     </tr>`
+                       array4.innerHTML +=row
+
+                }
+                   array4.classList.add("affiche");
+                    
+                    
+            
+                let button1=document.getElementById("button1");
+                let button2=document.getElementById("button2");
+                let button3=document.getElementById("button3");
+                let button4=document.getElementById("button4");
+                // affichage tableau1
+                function AfficheTableaux1(){
+                    array1.classList.remove("affiche")
+                    array2.classList.add("affiche")
+                    array3.classList.add("affiche")
+                    array4.classList.add("affiche")
+                }
+                
+                function AfficheTableaux2(){
+                    array1.classList.add("affiche")
+                    array2.classList.remove("affiche")
+                    array3.classList.add("affiche")
+                    array4.classList.add("affiche")
+                }
+                function AfficheTableaux3(){
+                    array1.classList.add("affiche")
+                    array2.classList.add("affiche")
+                    array3.classList.remove("affiche")
+                    array4.classList.add("affiche")
+                }
+                function AfficheTableaux4(){
+                    array1.classList.add("affiche")
+                    array2.classList.add("affiche")
+                    array3.classList.add("affiche")
+                    array4.classList.remove("affiche")
+                 }
+                // les ecouteurs d evenement
+                button1.addEventListener('click',function(){
+                    AfficheTableaux1()
+                })
+                button2.addEventListener('click',function(){
+                    AfficheTableaux2()
+                })
+                button3.addEventListener('click',function(){
+                    AfficheTableaux3()
+                })
+                button4.addEventListener('click',function(){
+                    AfficheTableaux4()
+                })
+
+                 // maxmum 
+              //  var max = array[0].note;
+              // var min = array[0].note;
+              // var maxAge = array[0].age;
+              // var minAge = array[0].age;
+              // for(var i= 0 ; i < array.length ; i++){
+              //     if( max < array[i].note){
+              //              max = array[i].note;
+              //              }
+              //          else if(min > array[i].note){
+              //           min = array[i].note;
+              //            }
+              //           }
+              //         document.write("La plus grande note est : " + max ) ;
+              //        document.write("La plus petite note est : " + min+ '!<br/>');
+                  //    for(var i= 0 ; i < array.length ; i++){
+                  // if( maxAge < array[i].age){
+                  //          maxAge = array[i].age;
+                  //          }
+                  //      else if(minAge > array[i].age){
+                  //       minAge = array[i].age;
+                  //        }
+                  //       }
+                        
+                  //       document.write("La plus grande age est : "  + maxAge);
+                  //    document.write("La plus petite age est : " + minAge);
+               
+
+
+                </script>
 
 
 
